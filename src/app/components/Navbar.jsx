@@ -94,38 +94,6 @@ export default function Navbar({ user: propUser, onLogout }) {
                                 className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}
                                 href="/"
                             >
-                                Inicio
-                            </Link>
-                        </li>
-                        <li className={styles.navItem}>
-                            <Link
-                                className={`${styles.navLink} ${pathname === '/actividades' ? styles.active : ''}`}
-                                href="/actividades"
-                            >
-                                Actividades
-                            </Link>
-                        </li>
-                        <li className={styles.navItem}>
-                            <Link
-                                className={`${styles.navLink} ${pathname === '/nosotros' ? styles.active : ''}`}
-                                href="/nosotros"
-                            >
-                                Nosotros
-                            </Link>
-                        </li>
-                        <li className={styles.navItem}>
-                            <Link
-                                className={`${styles.navLink} ${pathname === '/ministerios' ? styles.active : ''}`}
-                                href="/ministerios"
-                            >
-                                Ministerios
-                            </Link>
-                        </li>
-                        <li className={styles.navItem}>
-                            <Link
-                                className={`${styles.navLink} ${pathname === '/biblioteca' ? styles.active : ''}`}
-                                href="/biblioteca"
-                            >
                                 Biblioteca
                             </Link>
                         </li>
