@@ -199,11 +199,13 @@ export default function AdminClient({ user }) {
                 disponible: parseInt(newLibro.cantidad) > 0
             };
             if (editingLibroId) {
-                await actualizarLibro(editingLibroId, payload);
-                alert('✅ Actualizado');
+                const res = await actualizarLibro(editingLibroId, payload);
+                if (res.error) throw res.error;
+                alert('👍 Actualizado');
             } else {
-                await crearLibro(payload);
-                alert('✅ Guardado');
+                const res = await crearLibro(payload);
+                if (res.error) throw res.error;
+                alert('👍 Guardado');
             }
             setNewLibro({ titulo: '', autor: '', paginas: '', cantidad: 1, imagen_url: '', disponible: true });
             setEditingLibroId(null);
