@@ -1,0 +1,414 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding-top: 180px;
+}
+
+@media (max-width: 768px) {
+    .pageContainer {
+        padding-top: 160px;
+    }
+}
+
+.container {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem 2rem;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem 2rem 1rem;
+    }
+}
+
+.adminHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .adminHeader {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/* ===== TÍTULOS ===== */
+.title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #2c3e50;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #576574;
+    text-align: left;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .subtitle {
+        text-align: center;
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+.reportBtn {
+    background-color: #3c4d6b;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(60, 77, 107, 0.2);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .reportBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.reportBtn:hover {
+    background-color: #2c3a52;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(60, 77, 107, 0.3);
+}
+
+/* ===== FILTROS ===== */
+.filterContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #3c4d6b;
+    background: white;
+    color: #3c4d6b;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+    background: #3c4d6b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filterBtn.active {
+    background: #3c4d6b;
+    color: white;
+    box-shadow: 0 4px 12px rgba(60, 77, 107, 0.3);
+}
+
+/* ===== TABLA ===== */
+.tableContainer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.table thead {
+    background: #3c4d6b;
+    color: white;
+}
+
+.table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ecf0f1;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table td {
+    padding: 1.25rem 1rem;
+    color: #2c3e50;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== BOTONES DE ACCIÓN ===== */
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btnReminder, .btnDelete {
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnReminder {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btnDelete {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* ===== PESTAÑAS (TABS) ===== */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tabBtn {
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    flex-shrink: 0;
+}
+
+.tabBtn.active {
+    color: #3c4d6b;
+    border-bottom: 3px solid #3c4d6b;
+}
+
+/* ===== FORMULARIOS ===== */
+.formSection {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 3rem auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .formSection {
+        padding: 1.5rem;
+    }
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-bottom: 1rem;
+}
+
+.textarea {
+    min-height: 150px;
+}
+
+.submitBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .submitBtn {
+        width: 100%;
+    }
+}
+
+/* ===== GRID ARTÍCULOS / CONFIG ===== */
+.articlesGrid, .sitioGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.articleCard, .configCard {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #edf2f7;
+}
+
+@media (max-width: 768px) {
+    .articlesGrid, .sitioGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.formRow {
+    display: flex;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .formRow {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 5rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Config Fields */
+.configField {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.configField label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.inputGroup {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btnSave {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btnSave:hover {
+    background-color: #0056b3;
+}
+
+.fileUploadLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #6c757d;
+    color: white;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid #5a6268;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.2rem;
+}
+
+.fileUploadLabel:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fileInputHidden {
+    display: none;
+}
