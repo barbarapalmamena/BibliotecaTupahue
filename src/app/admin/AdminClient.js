@@ -875,7 +875,7 @@ export default function AdminClient({ user }) {
                                                                 disabled={actualizandoRol === u.id || u.id === user.id}
                                                                 onChange={(e) => handleUpdateRol(u.id, e.target.value)}
                                                             >
-                                                                <option value="user">Usuario</option>
+                                                                <option value="usuario">Usuario</option>
                                                                 <option value="admin">Administrador</option>
                                                             </select>
                                                         </td>
