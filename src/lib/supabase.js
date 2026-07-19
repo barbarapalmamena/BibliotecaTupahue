@@ -290,7 +290,7 @@ export async function actualizarRolUsuario(userId, nuevoRol) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -298,6 +298,23 @@ export async function actualizarRolUsuario(userId, nuevoRol) {
         .update({ rol: nuevoRol })
         .eq('id', userId)
         .select();
+    return { data, error };
+}
+
+export async function eliminarUsuario(userId) {
+    const client = getSupabaseClient();
+    const { data: { user } } = await client.auth.getUser();
+    const dbRole = user ? await getUserRole(user.id) : null;
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
+    if (!isAdmin) return { error: { message: 'No autorizado' } };
+
+    // Eliminar reservas del usuario para evitar violaciones de foreign key
+    await client.from('reservas').delete().eq('user_id', userId);
+
+    const { data, error } = await client
+        .from('usuarios')
+        .delete()
+        .eq('id', userId);
     return { data, error };
 }
 

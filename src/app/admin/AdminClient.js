@@ -20,7 +20,7 @@ import {
     actualizarMinisterio,
     eliminarMinisterio,
     getUsuarios,
-    actualizarRolUsuario
+    eliminarUsuario
 } from '../../lib/supabase';
 import { supabase, uploadMinisterioImagen } from '@/lib/supabase';
 import jsPDF from 'jspdf';
@@ -359,12 +359,14 @@ export default function AdminClient({ user }) {
         }
     };
 
-    const handleUpdateRol = async (userId, nuevoRol) => {
+    const handleDeleteUser = async (userId) => {
+        if (!confirm('¿Estás seguro de que quieres eliminar a este usuario de la base de datos? Esto no se puede deshacer.')) return;
         setActualizandoRol(userId);
         try {
-            const { error } = await actualizarRolUsuario(userId, nuevoRol);
+            const { error } = await eliminarUsuario(userId);
             if (error) throw error;
             fetchUsuarios();
+            alert('Usuario eliminado correctamente.');
         } catch (error) {
             alert('Error: ' + error.message);
         } finally {
@@ -843,7 +845,7 @@ export default function AdminClient({ user }) {
                                     </div>
                                     <div className={styles.tableContainer}>
                                         <table className={styles.table}>
-                                            <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Cambiar Rol</th></tr></thead>
+                                            <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Acciones</th></tr></thead>
                                             <tbody>
                                                 {usuarios.filter(u => {
                                                     const search = busquedaUsuario.toLowerCase();
@@ -865,16 +867,14 @@ export default function AdminClient({ user }) {
                                                             </span>
                                                         </td>
                                                         <td>
-                                                            <select 
-                                                                className={styles.input} 
-                                                                style={{ padding: '0.4rem', margin: 0, fontSize: '0.85rem', width: '150px' }}
-                                                                value={u.rol}
+                                                            <button 
+                                                                className={styles.btnDanger}
+                                                                style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
                                                                 disabled={actualizandoRol === u.id || u.id === user.id}
-                                                                onChange={(e) => handleUpdateRol(u.id, e.target.value)}
+                                                                onClick={() => handleDeleteUser(u.id)}
                                                             >
-                                                                <option value="usuario">Usuario</option>
-                                                                <option value="admin">Administrador</option>
-                                                            </select>
+                                                                <i className="bi bi-trash"></i> Eliminar
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))}
