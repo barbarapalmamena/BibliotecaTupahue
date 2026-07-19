@@ -438,10 +438,7 @@ export default function AdminClient({ user }) {
                 <div className={styles.tabs}>
                     <button className={`${styles.tabBtn} ${activeTab === 'inicio' ? styles.active : ''}`} onClick={() => setActiveTab('inicio')}>🏠 Inicio</button>
                     <button className={`${styles.tabBtn} ${activeTab === 'reservas' ? styles.active : ''}`} onClick={() => setActiveTab('reservas')}>📚 Préstamos</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'articulos' ? styles.active : ''}`} onClick={() => setActiveTab('articulos')}>✍️ Blog</button>
                     <button className={`${styles.tabBtn} ${activeTab === 'libros' ? styles.active : ''}`} onClick={() => setActiveTab('libros')}>📖 Inventario</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'configuracion' ? styles.active : ''}`} onClick={() => setActiveTab('configuracion')}>⚙️ Configuración</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'ministerios' ? styles.active : ''}`} onClick={() => setActiveTab('ministerios')}>🤝 Ministerios</button>
                     <button className={`${styles.tabBtn} ${activeTab === 'usuarios' ? styles.active : ''}`} onClick={() => setActiveTab('usuarios')}>👥 Usuarios</button>
                     <button className={`${styles.tabBtn} ${activeTab === 'reportes' ? styles.active : ''}`} onClick={() => setActiveTab('reportes')}>📊 Reportes</button>
                 </div>
