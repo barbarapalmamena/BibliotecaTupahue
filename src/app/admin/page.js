@@ -23,7 +23,7 @@ export default function AdminPage() {
             const role = await getUserRole(currentUser.id);
             
             // Verificar si el usuario es admin
-            const isAdmin = role === 'admin' || currentUser.user_metadata?.role === 'admin';
+            const isAdmin = role === 'admin' || currentUser.user_metadata?.role === 'admin' || currentUser.email === 'barbarapalmamena@gmail.com';
 
             if (!isAdmin) {
                 router.push('/');
