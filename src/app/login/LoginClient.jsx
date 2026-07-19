@@ -28,7 +28,7 @@ export default function LoginClient() {
 
         const checkUser = async () => {
             const user = await getCurrentUser();
-            if (user) router.push('/biblioteca');
+            if (user) router.push('/');
         };
         checkUser();
     }, [router]);
@@ -61,7 +61,7 @@ export default function LoginClient() {
                     localStorage.removeItem('tupahue_remember_email');
                     localStorage.removeItem('tupahue_remember_pass');
                 }
-                router.push('/biblioteca');
+                router.push('/');
             }
         } catch (err) {
             setError('Error al iniciar sesión');

@@ -21,7 +21,7 @@ export default function RegistroClient() {
     useEffect(() => {
         const checkUser = async () => {
             const user = await getCurrentUser();
-            if (user) router.push('/biblioteca');
+            if (user) router.push('/');
         };
         checkUser();
     }, [router]);
