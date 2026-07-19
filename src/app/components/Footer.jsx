@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -6,58 +5,55 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.footerContainer}>
                 <div className={styles.footerSection}>
-                    <h4 className={styles.footerTitle}>Iglesia Tupahue</h4>
-                    <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)', maxWidth: '250px' }}>
-                        Iglesia Reformada comprometida con la Palabra de Dios y el servicio a la comunidad.
-                    </p>
+                    <h5 className={styles.footerTitle}>Ubicación</h5>
+                    <a
+                        href="https://www.google.com/maps/dir//Deber+Cumplido+253,+Puerto+Montt,+Los+Lagos/"
+                        className={styles.footerLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Deber Cumplido 253, Puerto Montt, Los Lagos
+                    </a>
                 </div>
-
                 <div className={styles.footerSection}>
-                    <h4 className={styles.footerTitle}>Navegación</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Link href="/" className={styles.footerLink}>Biblioteca (Inicio)</Link>
-                        <Link href="/login" className={styles.footerLink}>Iniciar Sesión</Link>
-                    </div>
-                </div>
-
-                <div className={styles.footerSection}>
-                    <h4 className={styles.footerTitle}>Síguenos</h4>
+                    <h5 className={styles.footerTitle}>Redes sociales</h5>
                     <div className={styles.socialLinks}>
                         <a
                             href="https://www.instagram.com/iglesiatupahue"
+                            className={styles.footerLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.footerLink}
-                            aria-label="Instagram"
                         >
-                            <i className="bi bi-instagram" style={{ fontSize: '1.5rem' }}></i>
+                            <i className="bi bi-instagram"></i> Instagram
                         </a>
                         <a
-                            href="https://www.youtube.com/@iglesiatupahue"
+                            href="https://www.youtube.com/@iglesiareformadapuertomontt"
+                            className={styles.footerLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.footerLink}
-                            aria-label="YouTube"
                         >
-                            <i className="bi bi-youtube" style={{ fontSize: '1.5rem' }}></i>
+                            <i className="bi bi-youtube"></i> YouTube
                         </a>
                         <a
                             href="https://www.facebook.com/iglesiatupahue"
+                            className={styles.footerLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.footerLink}
-                            aria-label="Facebook"
                         >
-                            <i className="bi bi-facebook" style={{ fontSize: '1.5rem' }}></i>
+                            <i className="bi bi-facebook"></i> Facebook
                         </a>
                     </div>
                 </div>
+                <div className={styles.footerSection}>
+                    <h5 className={styles.footerTitle}>Contáctanos</h5>
+                    <a href="tel:+56956088059" className={styles.footerLink}>
+                        <i className="bi bi-telephone"></i> +56 9 5608 8059
+                    </a>
+                </div>
             </div>
-
             <hr className={styles.footerDivider} />
-
             <div className={styles.footerCopyright}>
-                <p>&copy; {new Date().getFullYear()} Iglesia Tupahue. Todos los derechos reservados.</p>
+                <p>©️ Copyright 2025 | Todos los derechos Reservados. Iglesia Reformada Tupahue.</p>
             </div>
         </footer>
     );
