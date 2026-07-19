@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import styles from './biblioteca.module.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import styles from './page.module.css';
 import {
     getLibros,
     reservarLibro,

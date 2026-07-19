@@ -47,15 +47,6 @@ export default function Navbar({ user, onLogout }) {
                                 className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
                                 onClick={() => setMenuOpen(false)}
                             >
-                                Inicio
-                            </Link>
-                        </li>
-                        <li className={styles.navItem}>
-                            <Link
-                                href="/biblioteca"
-                                className={`${styles.navLink} ${isActive('/biblioteca') ? styles.active : ''}`}
-                                onClick={() => setMenuOpen(false)}
-                            >
                                 Biblioteca
                             </Link>
                         </li>

@@ -5,328 +5,358 @@
     padding-top: 80px;
 }
 
-/* ===== HERO ===== */
-.hero {
-    min-height: 90vh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.heroOverlay {
-    background: rgba(30, 40, 60, 0.65);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-height: 90vh;
-    text-align: center;
-    padding: 2rem;
-}
-
-.heroTitle {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-    margin-bottom: 2rem;
-}
-
-.heroCta {
-    background-color: #ffc107;
-    color: #000;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 0.8rem 2rem;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.heroCta:hover {
-    background-color: #e0a800;
-    transform: translateY(-3px);
-    color: #000;
-}
-
-/* ===== MISIÓN Y VISIÓN ===== */
-.misionVision {
-    background-color: #3c4d6b;
-    padding: 4rem 1.5rem;
-}
-
-.container {
+.mainContainer {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 3rem 1.5rem;
 }
 
-.misionText {
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1.8;
+.pageTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     text-align: center;
-    max-width: 850px;
-    margin: 0 auto;
-    font-style: italic;
-}
-
-/* ===== SECCIÓN VIDEOS ===== */
-.videosSection {
-    padding: 5rem 1.5rem;
-    background-color: #f8f9fa;
-}
-
-.sectionTitle {
-    font-size: 2rem;
-    font-weight: 700;
+    font-weight: 800;
     color: #3c4d6b;
-    text-align: center;
-    margin-bottom: 2.5rem;
     position: relative;
 }
 
-.sectionTitle::after {
+.pageTitle::after {
     content: '';
     display: block;
     width: 60px;
-    height: 3px;
+    height: 4px;
     background-color: #ffc107;
     margin: 0.75rem auto 0;
     border-radius: 2px;
 }
 
-.videosGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+.welcomeMessage {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    border-left: 4px solid #0c5460;
 }
 
-.videoCard {
+.loadingMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 4rem;
+}
+
+/* ===== MIS RESERVAS ===== */
+.reservasContainer {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background-color: #eef2ff;
+    border-radius: 14px;
+    border: 1px solid #c7d7fe;
+}
+
+.reservasTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #333;
+}
+
+.reservasGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.reservaCard {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.reservaActiva {
+    border-left: 4px solid #17a2b8;
+}
+
+.reservaDevuelta {
+    border-left: 4px solid #28a745;
+}
+
+.reservaLibroTitulo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.reservaDetalle {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.25rem 0;
+}
+
+.btnDevolver {
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.9rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+}
+
+.btnDevolver:hover:not(:disabled) {
+    background-color: #b02a37;
+}
+
+.btnDevolver:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== BUSCADOR ===== */
+.searchContainer {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    font-family: inherit;
+    background: white;
+}
+
+.searchInput:focus {
+    border-color: #3c4d6b;
+    box-shadow: 0 0 0 3px rgba(60, 77, 107, 0.1);
+}
+
+/* ===== GRID DE LIBROS ===== */
+.booksGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* ===== CARDS DE LIBROS ===== */
+.bookCard {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.videoCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+.bookCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
-.videoContainer {
-    position: relative;
+.cardImageContainer {
     width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
+    height: 380px;
     overflow: hidden;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
 }
 
-.videoContainer iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+.placeholderImage {
     width: 100%;
     height: 100%;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    border-radius: 6px;
 }
 
 .cardBody {
-    padding: 1.2rem 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .cardTitle {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     color: #3c4d6b;
-    margin: 0;
+    line-height: 1.3;
 }
 
 .cardText {
     font-size: 0.9rem;
+    margin-bottom: 0.3rem;
     color: #666;
-    margin: 0.3rem 0 0;
+}
+
+/* ===== BOTONES ===== */
+.btnPrimary {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.btnPrimary:hover:not(:disabled) {
+    background-color: #17425d;
+    transform: translateY(-2px);
+}
+
+.btnPrimary:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.adminNote {
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.badgeDanger {
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1rem;
+}
+
+/* ===== SIN LIBROS ===== */
+.noBooks {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    grid-column: 1 / -1;
+    padding: 4rem 0;
+}
+
+/* ===== PAGINACIÓN ===== */
+.pagination {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.paginationBtn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    border: 2px solid #3c4d6b;
+    background-color: #fff;
+    color: #3c4d6b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
 }
 
-/* ===== ARTÍCULOS ===== */
-.articlesSection {
-    padding: 5rem 1.5rem;
-    background-color: #fff;
+.paginationBtn:hover:not(:disabled) {
+    background-color: #3c4d6b;
+    color: #fff;
 }
 
-.articlesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+.paginationBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #ccc;
 }
 
-.articleCard {
-    background: #f8f9fa;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease;
-    border-left: 4px solid #3c4d6b;
-}
-
-.articleCard:hover {
-    transform: translateY(-4px);
-}
-
-.articleBody {
-    padding: 1.5rem;
-}
-
-.articleMeta {
-    font-size: 0.8rem;
-    color: #888;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.articleTitle {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #3c4d6b;
-    margin-bottom: 0.75rem;
-}
-
-.articleText {
-    font-size: 0.9rem;
+.paginationInfo {
+    font-size: 1rem;
     color: #555;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* ===== ENCUENTROS ===== */
-.encuentrosSection {
-    padding: 5rem 1.5rem;
-    background-color: #f8f9fa;
-}
-
-.encuentrosGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    justify-content: center;
-}
-
-.encuentroCard {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.encuentroCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-
-.encuentroImageContainer {
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-}
-
-.encuentroImage {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.encuentroCard:hover .encuentroImage {
-    transform: scale(1.05);
-}
-
-/* ===== INSTAGRAM ===== */
-.instagramSection {
-    padding: 4rem 1.5rem;
-    background-color: #fff;
-}
-
-.instagramContainer {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.instagramText {
-    font-size: 1.1rem;
-    color: #555;
-}
-
-.instagramButton {
-    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    color: white;
-    font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-.instagramButton:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    color: white;
+    font-weight: 500;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 991px) {
-    .heroTitle {
-        font-size: 2.5rem;
+    .pageTitle {
+        font-size: 2rem;
     }
 
-    .videosGrid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-}
-
-@media (max-width: 767.98px) {
-    .heroTitle {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-    }
-
-    .sectionTitle {
-        font-size: 1.6rem;
-    }
-
-    .misionText {
-        font-size: 1rem;
+    .booksGrid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 575px) {
-    .videosGrid,
-    .articlesGrid,
-    .encuentrosGrid {
+    .pageTitle {
+        font-size: 1.6rem;
+    }
+
+    .cardTitle {
+        font-size: 1rem;
+    }
+
+    .cardText {
+        font-size: 0.85rem;
+    }
+
+    .booksGrid {
         grid-template-columns: 1fr;
     }
 }

@@ -1,10 +1,10 @@
-import HomeClient from './HomeClient';
+import BibliotecaClient from './BibliotecaClient';
 
 export const metadata = {
-    title: "Inicio | Iglesia Tupahue",
-    description: "Sitio oficial de la Iglesia Reformada Tupahue",
+    title: "Biblioteca | Iglesia Tupahue",
+    description: "Biblioteca de libros de la Iglesia Reformada Tupahue",
 };
 
 export default function Home() {
-    return <HomeClient />;
+    return <BibliotecaClient />;
 }

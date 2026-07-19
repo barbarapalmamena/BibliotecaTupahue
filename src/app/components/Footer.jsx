@@ -15,8 +15,7 @@ export default function Footer() {
                 <div className={styles.footerSection}>
                     <h4 className={styles.footerTitle}>Navegación</h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Link href="/" className={styles.footerLink}>Inicio</Link>
-                        <Link href="/biblioteca" className={styles.footerLink}>Biblioteca</Link>
+                        <Link href="/" className={styles.footerLink}>Biblioteca (Inicio)</Link>
                         <Link href="/login" className={styles.footerLink}>Iniciar Sesión</Link>
                     </div>
                 </div>
