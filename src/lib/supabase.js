@@ -214,7 +214,7 @@ export async function crearLibro(libro) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -228,7 +228,7 @@ export async function actualizarLibro(id, cambios) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -245,7 +245,7 @@ export async function eliminarLibro(id) {
     
     // Verificar rol (Base de datos o Metadata)
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
@@ -344,7 +344,7 @@ export async function crearArticulo(articulo) {
     // Verificar Admin (Seguridad extra)
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -361,7 +361,7 @@ export async function eliminarArticulo(id) {
     // Verificar Admin
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { error } = await client
@@ -378,7 +378,7 @@ export async function actualizarArticulo(id, cambios) {
     // Verificar Admin
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -405,7 +405,7 @@ export async function crearMinisterio(ministerio) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -419,7 +419,7 @@ export async function actualizarMinisterio(id, cambios) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { data, error } = await client
@@ -434,7 +434,7 @@ export async function eliminarMinisterio(id) {
     const client = getSupabaseClient();
     const { data: { user } } = await client.auth.getUser();
     const dbRole = user ? await getUserRole(user.id) : null;
-    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = dbRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     const { error } = await client
