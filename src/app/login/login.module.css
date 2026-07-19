@@ -1,0 +1,236 @@
+.pageContainer {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LOGIN SECTION ===== */
+.loginSection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+
+/* ===== LOGIN CARD ===== */
+.loginCard {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(60, 77, 107, 0.12);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(60, 77, 107, 0.18);
+}
+
+.loginHeader {
+    text-align: center;
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 3px solid #3c4d6b;
+}
+
+.logoContainer {
+    margin-bottom: 1.2rem;
+}
+
+.loginLogo {
+    object-fit: contain;
+}
+
+.loginTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #3c4d6b;
+}
+
+.loginSubtitle {
+    font-size: 0.95rem;
+    color: #777;
+    margin: 0;
+}
+
+/* ===== FORM ===== */
+.loginForm {
+    padding: 2rem;
+}
+
+.formGroup {
+    margin-bottom: 1.4rem;
+}
+
+.formLabel {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-size: 0.92rem;
+}
+
+.formInput {
+    width: 100%;
+    padding: 0.78rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.formInput:focus {
+    border-color: #3c4d6b;
+    box-shadow: 0 0 0 3px rgba(60, 77, 107, 0.1);
+}
+
+.passwordContainer {
+    position: relative;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.4rem;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.togglePassword:hover {
+    color: #3c4d6b;
+}
+
+/* ===== ERROR ===== */
+.errorMessage {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-size: 0.92rem;
+    border-left: 4px solid #dc3545;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== FORM OPTIONS ===== */
+.formOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #3c4d6b;
+}
+
+.forgotPassword {
+    font-size: 0.88rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgotPassword:hover {
+    color: #3c4d6b;
+    text-decoration: underline;
+}
+
+/* ===== SUBMIT ===== */
+.submitButton {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #3c4d6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: #2d3a52;
+    transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ===== LOGIN FOOTER ===== */
+.loginFooter {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    font-size: 0.92rem;
+    color: #666;
+}
+
+.registerLink {
+    color: #3c4d6b;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.registerLink:hover {
+    color: #ffc107;
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 575px) {
+    .loginHeader {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .loginForm {
+        padding: 1.5rem;
+    }
+
+    .loginTitle {
+        font-size: 1.5rem;
+    }
+}

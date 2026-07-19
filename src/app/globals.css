@@ -1,0 +1,43 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #3c4d6b;
+  --color-accent: #ffc107;
+  --color-accent-hover: #e0a800;
+  --color-blue-btn: #0d6efd;
+  --color-blue-btn-hover: #17425d;
+  --color-bg: #f8f9fa;
+  --color-white: #ffffff;
+  --color-text: #333333;
+  --color-muted: #666666;
+  --font-main: var(--font-inter), 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}

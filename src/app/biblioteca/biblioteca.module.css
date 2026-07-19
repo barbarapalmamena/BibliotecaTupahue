@@ -1,0 +1,362 @@
+/* ===== CONTENEDOR ===== */
+.pageContainer {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+}
+
+.mainContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.pageTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 800;
+    color: #3c4d6b;
+    position: relative;
+}
+
+.pageTitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #ffc107;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+.welcomeMessage {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    border-left: 4px solid #0c5460;
+}
+
+.loadingMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 4rem;
+}
+
+/* ===== MIS RESERVAS ===== */
+.reservasContainer {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background-color: #eef2ff;
+    border-radius: 14px;
+    border: 1px solid #c7d7fe;
+}
+
+.reservasTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #333;
+}
+
+.reservasGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.reservaCard {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.reservaActiva {
+    border-left: 4px solid #17a2b8;
+}
+
+.reservaDevuelta {
+    border-left: 4px solid #28a745;
+}
+
+.reservaLibroTitulo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.reservaDetalle {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.25rem 0;
+}
+
+.btnDevolver {
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.9rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+}
+
+.btnDevolver:hover:not(:disabled) {
+    background-color: #b02a37;
+}
+
+.btnDevolver:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== BUSCADOR ===== */
+.searchContainer {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    font-family: inherit;
+    background: white;
+}
+
+.searchInput:focus {
+    border-color: #3c4d6b;
+    box-shadow: 0 0 0 3px rgba(60, 77, 107, 0.1);
+}
+
+/* ===== GRID DE LIBROS ===== */
+.booksGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* ===== CARDS DE LIBROS ===== */
+.bookCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bookCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.cardImageContainer {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.placeholderImage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    border-radius: 6px;
+}
+
+.cardBody {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #3c4d6b;
+    line-height: 1.3;
+}
+
+.cardText {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #666;
+}
+
+/* ===== BOTONES ===== */
+.btnPrimary {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.btnPrimary:hover:not(:disabled) {
+    background-color: #17425d;
+    transform: translateY(-2px);
+}
+
+.btnPrimary:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.adminNote {
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.badgeDanger {
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1rem;
+}
+
+/* ===== SIN LIBROS ===== */
+.noBooks {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    grid-column: 1 / -1;
+    padding: 4rem 0;
+}
+
+/* ===== PAGINACIÓN ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.paginationBtn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    border: 2px solid #3c4d6b;
+    background-color: #fff;
+    color: #3c4d6b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.paginationBtn:hover:not(:disabled) {
+    background-color: #3c4d6b;
+    color: #fff;
+}
+
+.paginationBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #ccc;
+}
+
+.paginationInfo {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .pageTitle {
+        font-size: 2rem;
+    }
+
+    .booksGrid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .pageTitle {
+        font-size: 1.6rem;
+    }
+
+    .cardTitle {
+        font-size: 1rem;
+    }
+
+    .cardText {
+        font-size: 0.85rem;
+    }
+
+    .booksGrid {
+        grid-template-columns: 1fr;
+    }
+}

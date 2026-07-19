@@ -1,0 +1,332 @@
+/* ===== CONTENEDOR ===== */
+.pageContainer {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.heroOverlay {
+    background: rgba(30, 40, 60, 0.65);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 90vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
+}
+
+.heroCta {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.heroCta:hover {
+    background-color: #e0a800;
+    transform: translateY(-3px);
+    color: #000;
+}
+
+/* ===== MISIÓN Y VISIÓN ===== */
+.misionVision {
+    background-color: #3c4d6b;
+    padding: 4rem 1.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.misionText {
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* ===== SECCIÓN VIDEOS ===== */
+.videosSection {
+    padding: 5rem 1.5rem;
+    background-color: #f8f9fa;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3c4d6b;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.sectionTitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #ffc107;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+.videosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.videoCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videoCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.videoContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.videoContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.cardBody {
+    padding: 1.2rem 1.5rem;
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3c4d6b;
+    margin: 0;
+}
+
+.cardText {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.3rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ===== ARTÍCULOS ===== */
+.articlesSection {
+    padding: 5rem 1.5rem;
+    background-color: #fff;
+}
+
+.articlesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.articleCard {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+    border-left: 4px solid #3c4d6b;
+}
+
+.articleCard:hover {
+    transform: translateY(-4px);
+}
+
+.articleBody {
+    padding: 1.5rem;
+}
+
+.articleMeta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.articleTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3c4d6b;
+    margin-bottom: 0.75rem;
+}
+
+.articleText {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ===== ENCUENTROS ===== */
+.encuentrosSection {
+    padding: 5rem 1.5rem;
+    background-color: #f8f9fa;
+}
+
+.encuentrosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.encuentroCard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.encuentroCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.encuentroImageContainer {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.encuentroImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.encuentroCard:hover .encuentroImage {
+    transform: scale(1.05);
+}
+
+/* ===== INSTAGRAM ===== */
+.instagramSection {
+    padding: 4rem 1.5rem;
+    background-color: #fff;
+}
+
+.instagramContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.instagramText {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.instagramButton {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.instagramButton:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .videosGrid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .heroTitle {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .sectionTitle {
+        font-size: 1.6rem;
+    }
+
+    .misionText {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .videosGrid,
+    .articlesGrid,
+    .encuentrosGrid {
+        grid-template-columns: 1fr;
+    }
+}

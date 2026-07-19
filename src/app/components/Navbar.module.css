@@ -1,0 +1,175 @@
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 80px;
+    padding: 0.5rem 1.5rem;
+    background-color: #3c4d6b;
+}
+
+.navbarContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbarBrand {
+    display: flex;
+    align-items: center;
+}
+
+.logoNavbar {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbarToggler {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.navbarTogglerIcon {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+}
+
+.navbarTogglerIcon::before,
+.navbarTogglerIcon::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    left: 0;
+}
+
+.navbarTogglerIcon::before {
+    top: -8px;
+}
+
+.navbarTogglerIcon::after {
+    bottom: -8px;
+}
+
+.navbarCollapse {
+    display: flex;
+    align-items: center;
+}
+
+.navbarNav {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navItem {
+    list-style: none;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+    display: block;
+    font-size: 0.97rem;
+}
+
+.navLink:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.navLink.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+/* ===== BOTÓN LOGIN ===== */
+.btnLogin {
+    background-color: #ffc107;
+    color: #000;
+    border-radius: 8px;
+    padding: 6px 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.btnLogin:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+    color: #000;
+}
+
+.btnLogin.active {
+    background-color: #e0a800;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767.98px) {
+    .logoNavbar {
+        height: 120px;
+    }
+
+    .navbarToggler {
+        display: block;
+    }
+
+    .navbarCollapse {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #3c4d6b;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbarCollapse.show {
+        display: block;
+    }
+
+    .navbarNav {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .navLink {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btnLogin {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        display: block;
+    }
+}
