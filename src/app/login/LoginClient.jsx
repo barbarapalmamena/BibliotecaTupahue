@@ -165,15 +165,6 @@ export default function LoginClient() {
                                 )}
                             </button>
                         </form>
-
-                        <div className={styles.loginFooter}>
-                            <p>
-                                ¿No tienes cuenta?{' '}
-                                <Link href="/registro" className={styles.registerLink}>
-                                    Regístrate aquí
-                                </Link>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
