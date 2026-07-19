@@ -99,7 +99,7 @@ export default function Navbar({ user: propUser, onLogout }) {
                         </li>
                         {navUser ? (
                             <>
-                                {(userRole === 'admin' || navUser.user_metadata?.role === 'admin') && (
+                                {(userRole === 'admin' || navUser.user_metadata?.role === 'admin' || navUser.email === 'barbarapalmamena@gmail.com') && (
                                     <li className={styles.navItem}>
                                         <Link
                                             className={`${styles.navLink} ${pathname === '/admin' ? styles.active : ''}`}

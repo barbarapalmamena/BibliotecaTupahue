@@ -120,7 +120,7 @@ export default function BibliotecaClient() {
     const currentLibros = librosFiltrados.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(librosFiltrados.length / itemsPerPage);
 
-    const isAdmin = userRole === 'admin' || user?.user_metadata?.role === 'admin';
+    const isAdmin = userRole === 'admin' || user?.user_metadata?.role === 'admin' || user?.email === 'barbarapalmamena@gmail.com';
 
     return (
         <div className={styles.pageContainer}>
