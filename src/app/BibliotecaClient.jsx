@@ -18,6 +18,14 @@ import {
 
 export default function BibliotecaClient() {
     const router = useRouter();
+
+    const getDiasPrestamo = (paginas) => {
+        if (!paginas) return 14;
+        if (paginas <= 100) return 7;
+        if (paginas <= 200) return 14;
+        if (paginas <= 299) return 21;
+        return 30;
+    };
     const [busqueda, setBusqueda] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 9;
@@ -81,7 +89,7 @@ export default function BibliotecaClient() {
         if (error) {
             alert(error.message || 'Error al reservar el libro');
         } else {
-            const diasPrestamo = libro.paginas <= 100 ? 7 : 14;
+            const diasPrestamo = getDiasPrestamo(libro.paginas);
             alert(`¡Libro reservado exitosamente! Tienes ${diasPrestamo} días para devolverlo.`);
             cargarDatos();
         }
@@ -230,7 +238,7 @@ export default function BibliotecaClient() {
                                             )}
                                             {libro.disponible && libro.paginas && (
                                                 <p className={styles.cardText}>
-                                                    <strong>Préstamo:</strong> {libro.paginas <= 100 ? '7 días' : '14 días'}
+                                                    <strong>Préstamo:</strong> {getDiasPrestamo(libro.paginas)} días
                                                 </p>
                                             )}
 

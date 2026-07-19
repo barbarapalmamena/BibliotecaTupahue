@@ -124,7 +124,14 @@ export async function reservarLibro(libroId) {
         return { data: null, error: { message: 'No quedan ejemplares disponibles de este libro' } }
     }
 
-    const diasPrestamo = (libro.paginas && libro.paginas <= 100) ? 7 : 14;
+    let diasPrestamo = 14;
+    if (libro.paginas) {
+        if (libro.paginas <= 100) diasPrestamo = 7;
+        else if (libro.paginas <= 200) diasPrestamo = 14;
+        else if (libro.paginas <= 299) diasPrestamo = 21;
+        else diasPrestamo = 30;
+    }
+    
     const fechaVencimiento = new Date();
     fechaVencimiento.setDate(fechaVencimiento.getDate() + diasPrestamo);
 
