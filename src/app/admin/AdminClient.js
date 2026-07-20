@@ -435,7 +435,7 @@ export default function AdminClient({ user }) {
                 <div className={styles.adminHeader}>
                     <div>
                         <h1 className={styles.title}>Panel de Control</h1>
-                        <p className={styles.subtitle}>Gestiona el contenido, la biblioteca y los ministerios de la iglesia</p>
+                        <p className={styles.subtitle}>Gestiona la biblioteca de la iglesia</p>
                     </div>
                 </div>
 
