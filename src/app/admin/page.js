@@ -13,7 +13,8 @@ export default function AdminPage() {
     useEffect(() => {
         async function checkAuth() {
             const currentUser = await getCurrentUser();
-            
+            console.log('CURRENT USER:', currentUser); // 👈
+
             if (!currentUser) {
                 router.push('/login');
                 return;
@@ -21,9 +22,13 @@ export default function AdminPage() {
 
             // Obtener rol de la base de datos para máxima seguridad
             const role = await getUserRole(currentUser.id);
-            
+            console.log('USER ID:', currentUser.id); // 👈
+            console.log('ROLE FROM DB:', role); // 👈
+            console.log('USER METADATA ROLE:', currentUser.user_metadata?.role); // 👈
+
             // Verificar si el usuario es admin
             const isAdmin = role === 'admin' || currentUser.user_metadata?.role === 'admin' || currentUser.email === 'barbarapalmamena@gmail.com';
+            console.log('IS ADMIN?:', isAdmin); // 👈
 
             if (!isAdmin) {
                 router.push('/');
