@@ -88,7 +88,7 @@ export default function LoginClient() {
                                 />
                             </div>
                             <h1 className={styles.loginTitle}>Bienvenido</h1>
-                            <p className={styles.loginSubtitle}>Inicia sesión en tu cuenta</p>
+                            <p className={styles.loginSubtitle}>Gestiona la biblioteca de la Iglesia</p>
                         </div>
 
                         <form className={styles.loginForm} onSubmit={handleSubmit} noValidate>

@@ -89,7 +89,7 @@ export default function RegistroClient() {
                                 />
                             </div>
                             <h1 className={styles.registroTitle}>Crear Cuenta</h1>
-                            <p className={styles.registroSubtitle}>Únete a la comunidad Tupahue</p>
+                            <p className={styles.registroSubtitle}>Gestiona la biblioteca de la Iglesia</p>
                         </div>
 
                         <form className={styles.registroForm} onSubmit={handleSubmit} noValidate>
