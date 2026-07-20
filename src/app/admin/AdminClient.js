@@ -171,11 +171,11 @@ export default function AdminClient({ user }) {
         try {
             if (editingArticuloId) {
                 await actualizarArticulo(editingArticuloId, newArticulo);
-                alert('✅ Reflexión actualizada');
+                alert(' Reflexión actualizada');
                 setEditingArticuloId(null);
             } else {
                 await crearArticulo(newArticulo);
-                alert('✅ Reflexión publicada');
+                alert(' Reflexión publicada');
             }
             setNewArticulo({ titulo: '', contenido: '', autor: user?.user_metadata?.nombre || '' });
             fetchArticulos();
@@ -201,11 +201,11 @@ export default function AdminClient({ user }) {
             if (editingLibroId) {
                 const res = await actualizarLibro(editingLibroId, payload);
                 if (res.error) throw res.error;
-                alert('👍 Actualizado');
+                alert(' Actualizado');
             } else {
                 const res = await crearLibro(payload);
                 if (res.error) throw res.error;
-                alert('👍 Guardado');
+                alert(' Guardado');
             }
             setNewLibro({ titulo: '', autor: '', paginas: '', cantidad: 1, imagen_url: '', disponible: true });
             setEditingLibroId(null);
@@ -311,11 +311,11 @@ export default function AdminClient({ user }) {
         try {
             if (editingMinisterioId) {
                 await actualizarMinisterio(editingMinisterioId, { ...newMinisterio, imagen: imagenUrl });
-                alert('✅ Ministerio actualizado');
+                alert(' Ministerio actualizado');
                 setEditingMinisterioId(null);
             } else {
                 await crearMinisterio({ ...newMinisterio, imagen: imagenUrl });
-                alert('✅ Ministerio creado');
+                alert(' Ministerio creado');
             }
             setNewMinisterio({ nombre: '', descripcion: '', encargado: '', categoria: 'general', imagen: '' });
             setArchivoImagen(null);
@@ -354,10 +354,10 @@ export default function AdminClient({ user }) {
                 body: JSON.stringify({ reservaId })
             });
             const result = await response.json();
-            if (result.success) alert('✅ Recordatorio enviado con éxito');
+            if (result.success) alert(' Recordatorio enviado con éxito');
             else throw new Error(result.error);
         } catch (error) {
-            alert('❌ Error: ' + error.message);
+            alert(' Error: ' + error.message);
         }
     };
 
@@ -421,7 +421,7 @@ export default function AdminClient({ user }) {
             });
             const result = await response.json();
             if (result.success) {
-                alert(`📊 Reporte Generado:\n- Mes: ${result.stats.mes}\n- Reservas: ${result.stats.totalReservas}\n- Usuarios: ${result.stats.usuariosUnicos}`);
+                alert(` Reporte Generado:\n- Mes: ${result.stats.mes}\n- Reservas: ${result.stats.totalReservas}\n- Usuarios: ${result.stats.usuariosUnicos}`);
             }
         } catch (error) {
             alert('Error al generar reporte');
@@ -440,11 +440,11 @@ export default function AdminClient({ user }) {
                 </div>
 
                 <div className={styles.tabs}>
-                    <button className={`${styles.tabBtn} ${activeTab === 'inicio' ? styles.active : ''}`} onClick={() => setActiveTab('inicio')}>🏠 Inicio</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'reservas' ? styles.active : ''}`} onClick={() => setActiveTab('reservas')}>📚 Préstamos</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'libros' ? styles.active : ''}`} onClick={() => setActiveTab('libros')}>📖 Inventario</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'usuarios' ? styles.active : ''}`} onClick={() => setActiveTab('usuarios')}>👥 Usuarios</button>
-                    <button className={`${styles.tabBtn} ${activeTab === 'reportes' ? styles.active : ''}`} onClick={() => setActiveTab('reportes')}>📊 Reportes</button>
+                    <button className={`${styles.tabBtn} ${activeTab === 'inicio' ? styles.active : ''}`} onClick={() => setActiveTab('inicio')}> Inicio</button>
+                    <button className={`${styles.tabBtn} ${activeTab === 'reservas' ? styles.active : ''}`} onClick={() => setActiveTab('reservas')}> Préstamos</button>
+                    <button className={`${styles.tabBtn} ${activeTab === 'libros' ? styles.active : ''}`} onClick={() => setActiveTab('libros')}> Inventario</button>
+                    <button className={`${styles.tabBtn} ${activeTab === 'usuarios' ? styles.active : ''}`} onClick={() => setActiveTab('usuarios')}> Usuarios</button>
+                    <button className={`${styles.tabBtn} ${activeTab === 'reportes' ? styles.active : ''}`} onClick={() => setActiveTab('reportes')}> Reportes</button>
                 </div>
 
                 {loading ? <div className={styles.loading}>Cargando...</div> : (
@@ -515,7 +515,7 @@ export default function AdminClient({ user }) {
                         {activeTab === 'articulos' && (
                             <div className={styles.articlesSection}>
                                 <div className={styles.formSection}>
-                                    <h2>{editingArticuloId ? '✏️ Editar Reflexión' : '✍️ Nueva Reflexión'}</h2>
+                                    <h2>{editingArticuloId ? ' Editar Reflexión' : ' Nueva Reflexión'}</h2>
                                     <form onSubmit={handleCrearArticulo}>
                                         <input className={styles.input} value={newArticulo.titulo} onChange={e => setNewArticulo({...newArticulo, titulo: e.target.value})} placeholder="Título" required />
                                         <textarea className={styles.textarea} value={newArticulo.contenido} onChange={e => setNewArticulo({...newArticulo, contenido: e.target.value})} placeholder="Contenido" required />
@@ -527,7 +527,7 @@ export default function AdminClient({ user }) {
                                     </form>
                                 </div>
                                 <div className={styles.listSection}>
-                                    <h2>📋 Reflexiones Publicadas</h2>
+                                    <h2> Reflexiones Publicadas</h2>
                                     <div className={styles.tableContainer}>
                                         <table className={styles.table}>
                                             <thead><tr><th>Fecha</th><th>Título</th><th>Autor</th><th>Acciones</th></tr></thead>
@@ -567,7 +567,7 @@ export default function AdminClient({ user }) {
                         {activeTab === 'libros' && (
                             <div className={styles.articlesSection}>
                                 <div className={styles.formSection}>
-                                    <h2>{editingLibroId ? '✏️ Editar' : '📚 Nuevo Libro'}</h2>
+                                    <h2>{editingLibroId ? ' Editar' : ' Nuevo Libro'}</h2>
                                     <form onSubmit={handleCrearLibro}>
                                         <div className={styles.formRow}>
                                             <input className={styles.input} value={newLibro.titulo} onChange={e => setNewLibro({...newLibro, titulo: e.target.value})} placeholder="Título" required />
@@ -643,7 +643,7 @@ export default function AdminClient({ user }) {
                             <div className={styles.configSection}>
                                 <div className={styles.sitioGrid}>
                                     <div className={styles.configCard}>
-                                        <h3>🏠 Inicio - Hero</h3>
+                                        <h3> Inicio - Hero</h3>
                                         <p>Título Principal (Hero)</p>
                                         <textarea 
                                             className={styles.textarea} 
@@ -663,7 +663,7 @@ export default function AdminClient({ user }) {
                                     </div>
 
                                     <div className={styles.configCard}>
-                                        <h3>📽️ Videos (YouTube)</h3>
+                                        <h3> Videos (YouTube)</h3>
                                         <div className={styles.configField}>
                                             <label>Servicio Dominical</label>
                                             <div className={styles.inputGroup}>
@@ -703,7 +703,7 @@ export default function AdminClient({ user }) {
                                     </div>
 
                                     <div className={styles.configCard}>
-                                        <h3>📅 Horarios y Encuentros</h3>
+                                        <h3> Horarios y Encuentros</h3>
                                         <p>Miércoles (Oración)</p>
                                         <input 
                                             className={styles.input} 
@@ -721,7 +721,7 @@ export default function AdminClient({ user }) {
                                     </div>
 
                                     <div className={styles.configCard}>
-                                        <h3>👥 Nosotros</h3>
+                                        <h3> Nosotros</h3>
                                         <p>Quiénes Somos</p>
                                         <textarea 
                                             className={styles.textarea} 
@@ -746,7 +746,7 @@ export default function AdminClient({ user }) {
                                     </div>
                                 </div>
                                 <div style={{ marginTop: '2rem', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
-                                    {guardandoConfig ? '⌛ Guardando cambios...' : '✅ Los cambios se guardan automáticamente al salir del campo'}
+                                    {guardandoConfig ? ' Guardando cambios...' : ' Los cambios se guardan automáticamente al salir del campo'}
                                 </div>
                             </div>
                         )}
@@ -754,7 +754,7 @@ export default function AdminClient({ user }) {
                         {activeTab === 'ministerios' && (
                             <div className={styles.articlesSection}>
                                 <div className={styles.formSection}>
-                                    <h2>{editingMinisterioId ? '✏️ Editar Ministerio' : '🤝 Nuevo Ministerio'}</h2>
+                                    <h2>{editingMinisterioId ? ' Editar Ministerio' : ' Nuevo Ministerio'}</h2>
                                     <form onSubmit={handleCrearMinisterio}>
                                         <div className={styles.formRow}>
                                             <input className={styles.input} value={newMinisterio.nombre} onChange={e => setNewMinisterio({...newMinisterio, nombre: e.target.value})} placeholder="Nombre del Ministerio" required />
@@ -791,7 +791,7 @@ export default function AdminClient({ user }) {
                                     </form>
                                 </div>
                                 <div className={styles.listSection}>
-                                    <h2>📋 Ministerios Registrados</h2>
+                                    <h2> Ministerios Registrados</h2>
                                     <div className={styles.tableContainer}>
                                         <table className={styles.table}>
                                             <thead><tr><th>Nombre</th><th>Encargado</th><th>Categoría</th><th>Acciones</th></tr></thead>
@@ -832,7 +832,7 @@ export default function AdminClient({ user }) {
                             <div className={styles.articlesSection}>
                                 <div className={styles.listSection}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                                        <h2>👥 Gestión de Usuarios</h2>
+                                        <h2> Gestión de Usuarios</h2>
                                         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                                             <i className="bi bi-search" style={{ color: '#666' }}></i>
                                             <input 
@@ -865,7 +865,7 @@ export default function AdminClient({ user }) {
                                                                 backgroundColor: u.rol === 'admin' ? '#3c4d6b' : '#e9ecef',
                                                                 color: u.rol === 'admin' ? 'white' : '#495057'
                                                             }}>
-                                                                {u.rol === 'admin' ? '🛡️ ADMIN' : '👤 USUARIO'}
+                                                                {u.rol === 'admin' ? ' ADMIN' : ' USUARIO'}
                                                             </span>
                                                         </td>
                                                         <td>
