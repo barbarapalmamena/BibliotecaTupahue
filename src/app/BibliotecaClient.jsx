@@ -91,6 +91,20 @@ export default function BibliotecaClient() {
         } else {
             const diasPrestamo = getDiasPrestamo(libro.paginas);
             alert(`¡Libro reservado exitosamente! Tienes ${diasPrestamo} días para devolverlo.`);
+            
+            // Enviar correo de confirmación
+            fetch('/api/reservas/confirmacion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: user.email,
+                    nombre: user.user_metadata?.nombre || user.email.split('@')[0],
+                    libroTitulo: libro.titulo,
+                    autor: libro.autor,
+                    diasPrestamo: diasPrestamo
+                })
+            }).catch(err => console.error('Error enviando correo de confirmación:', err));
+
             cargarDatos();
         }
         setReservando(null);
