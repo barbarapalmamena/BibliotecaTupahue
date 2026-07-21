@@ -28,15 +28,21 @@ export default function BibliotecaClient() {
     };
 
     const calcularDias = (reserva) => {
-        const inicio = new Date(reserva.created_at);
-        const vence  = new Date(reserva.vencimiento);
-        const hoy    = new Date();
-        const total      = Math.round((vence - inicio) / (1000 * 60 * 60 * 24));
-        const transcurridos = Math.round((hoy - inicio)  / (1000 * 60 * 60 * 24));
-        const restantes  = Math.max(0, Math.round((vence - hoy) / (1000 * 60 * 60 * 24)));
-        const progreso   = Math.min(100, Math.round((transcurridos / total) * 100));
-        const vencido    = hoy > vence;
-        return { total, transcurridos, restantes, progreso, vencido };
+        try {
+            if (!reserva?.created_at || !reserva?.vencimiento) return null;
+            const inicio = new Date(reserva.created_at);
+            const vence  = new Date(reserva.vencimiento);
+            const hoy    = new Date();
+            if (isNaN(inicio) || isNaN(vence)) return null;
+            const total         = Math.max(1, Math.round((vence - inicio) / (1000 * 60 * 60 * 24)));
+            const transcurridos = Math.max(0, Math.round((hoy - inicio)  / (1000 * 60 * 60 * 24)));
+            const restantes     = Math.max(0, Math.round((vence - hoy)   / (1000 * 60 * 60 * 24)));
+            const progreso      = Math.min(100, Math.round((transcurridos / total) * 100));
+            const vencido       = hoy > vence;
+            return { total, transcurridos, restantes, progreso, vencido };
+        } catch {
+            return null;
+        }
     };
     const [busqueda, setBusqueda] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
