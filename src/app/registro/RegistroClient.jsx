@@ -55,17 +55,23 @@ export default function RegistroClient() {
             const { data, error } = await signUp(formData.email, formData.password, formData.nombre);
 
             if (error) {
-                if (error.message?.includes('already registered')) {
-                    setError('Este correo ya está registrado');
+                console.error('Error Supabase signup:', error);
+                if (error.message?.includes('already registered') || error.message?.includes('User already registered')) {
+                    setError('Este correo ya está registrado. Intenta iniciar sesión.');
+                } else if (error.status === 500 || error.message?.includes('500')) {
+                    setError('El servicio no está disponible en este momento. Intenta nuevamente en unos minutos.');
+                } else if (error.message?.includes('invalid')) {
+                    setError('El correo electrónico no es válido.');
                 } else {
-                    setError(error.message || 'Error al registrarse');
+                    setError(error.message || error.error_description || 'Error al registrarse. Intenta de nuevo.');
                 }
             } else {
                 setSuccess('¡Registro exitoso! Revisa tu correo para confirmar tu cuenta.');
                 setFormData({ nombre: '', email: '', password: '', confirmar: '' });
             }
         } catch (err) {
-            setError('Error al registrarse');
+            console.error('Error inesperado:', err);
+            setError('Error de conexión. Verifica tu internet e intenta nuevamente.');
         } finally {
             setLoading(false);
         }
