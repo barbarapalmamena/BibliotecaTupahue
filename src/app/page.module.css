@@ -93,6 +93,11 @@
     border-left: 4px solid #28a745;
 }
 
+.reservaVencida {
+    border-left: 4px solid #dc3545;
+    background-color: #fff8f8;
+}
+
 .reservaLibroTitulo {
     font-size: 1rem;
     font-weight: 600;
