@@ -105,7 +105,7 @@ export async function reservarLibro(libroId) {
     const { data: reservasActivas } = await client
         .from('reservas')
         .select('id')
-        .eq('user_id', userId)
+        .eq('usuario_id', userId)
         .eq('estado', 'activa')
         .limit(1);
 
@@ -139,7 +139,7 @@ export async function reservarLibro(libroId) {
         .from('reservas')
         .insert([{ 
             libro_id: libroId, 
-            user_id: userId, 
+            usuario_id: userId, 
             estado: 'activa',
             vencimiento: fechaVencimiento.toISOString()
         }])
@@ -160,7 +160,7 @@ export async function getReservasUsuario(userId) {
     const { data, error } = await client
         .from('reservas')
         .select(`*, libros (titulo, autor, categoria, paginas)`)
-        .eq('user_id', userId)
+        .eq('usuario_id', userId)
         .order('created_at', { ascending: false })
     return { data, error }
 }
@@ -316,7 +316,7 @@ export async function eliminarUsuario(userId) {
     if (!isAdmin) return { error: { message: 'No autorizado' } };
 
     // Eliminar reservas del usuario para evitar violaciones de foreign key
-    await client.from('reservas').delete().eq('user_id', userId);
+    await client.from('reservas').delete().eq('usuario_id', userId);
 
     const { data, error } = await client
         .from('usuarios')
