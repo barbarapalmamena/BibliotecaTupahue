@@ -8,8 +8,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Iglesia Tupahue",
-  description: "Sitio web de la Iglesia Reformada Tupahue",
+  title: "Biblioteca | Iglesia Tupahue",
+  description: "Sitio web y biblioteca de la Iglesia Reformada Tupahue",
+  icons: {
+    icon: "/img/LogoTupahue.png",
+    shortcut: "/img/LogoTupahue.png",
+    apple: "/img/LogoTupahue.png",
+  },
 };
 
 export default function RootLayout({ children }) {
