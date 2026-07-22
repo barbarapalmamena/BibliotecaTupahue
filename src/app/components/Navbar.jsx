@@ -115,7 +115,6 @@ export default function Navbar({ user: propUser, onLogout }) {
                                             className={`${styles.navLink} ${pathname === '/mis-reservas' ? styles.active : ''}`}
                                             href="/mis-reservas"
                                         >
-                                            <i className="bi bi-bookmark-check" style={{ marginRight: '0.3rem' }}></i>
                                             Mis Reservas
                                         </Link>
                                     </li>

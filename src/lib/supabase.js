@@ -172,7 +172,7 @@ export async function devolverLibro(reservaId, libroId) {
 
     const { data, error } = await client
         .from('reservas')
-        .update({ estado: 'devuelto', fecha_devolucion: new Date().toISOString() })
+        .update({ estado: 'devuelto' })
         .eq('id', reservaId)
 
     if (!error && libroId) {
