@@ -36,9 +36,9 @@ export async function GET(request) {
             id,
             estado,
             created_at,
-            fecha_devolucion,
+            vencimiento,
             libro_id,
-            user_id,
+            usuario_id,
             libros (titulo, autor, paginas)
         `)
         .order('created_at', { ascending: false });
@@ -51,7 +51,7 @@ export async function GET(request) {
     
     const combinedData = data.map(reserva => ({
         ...reserva,
-        usuario: profiles.find(p => p.id === reserva.user_id) || { nombre: 'Usuario Desconocido', email: 'N/A' }
+        usuario: profiles.find(p => p.id === reserva.usuario_id) || { nombre: 'Usuario Desconocido', email: 'N/A' }
     }));
 
     return NextResponse.json({ data: combinedData });
