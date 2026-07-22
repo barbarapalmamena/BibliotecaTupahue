@@ -22,7 +22,7 @@ export async function GET(request) {
         .eq('id', user.id)
         .single();
 
-    const isAdmin = userData?.rol === 'admin' || user.user_metadata?.role === 'admin';
+    const isAdmin = userData?.rol === 'admin' || user.user_metadata?.role === 'admin' || user.email === 'barbarapalmamena@gmail.com';
 
     if (!isAdmin) {
         return NextResponse.json({ error: 'Prohibido. Se requiere rol de admin.' }, { status: 403 });

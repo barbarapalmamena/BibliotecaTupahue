@@ -88,15 +88,21 @@ export default function AdminClient({ user }) {
     async function fetchDashboardStats() {
         setLoading(true);
         try {
-            // Usamos queries separadas y manejamos errores individualmente
-            const { count: totalReservas } = await supabase.from('reservas').select('*', { count: 'exact', head: true });
-            const { count: activos } = await supabase.from('reservas').select('*', { count: 'exact', head: true }).eq('estado', 'activa');
-            const { count: usuariosCount } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
-            
+            const { data: { session } } = await supabase.auth.getSession();
+            let resList = [];
+            if (session?.access_token) {
+                const response = await fetch('/api/admin/reservas', {
+                    headers: { 'Authorization': `Bearer ${session.access_token}` }
+                });
+                const resJson = await response.json();
+                if (resJson.data) resList = resJson.data;
+            }
+            const { data: usuariosData } = await getUsuarios();
+
             setStats({
-                totalReservas: totalReservas || 0,
-                activos: activos || 0,
-                usuarios: usuariosCount || 0
+                totalReservas: resList.length,
+                activos: resList.filter(r => r.estado === 'activa').length,
+                usuarios: usuariosData?.length || 0
             });
         } catch (error) { 
             console.error('Error fetching dashboard stats:', error); 
@@ -135,12 +141,24 @@ export default function AdminClient({ user }) {
         setLoading(true);
         try {
             const { data: { session } } = await supabase.auth.getSession();
+            if (!session?.access_token) {
+                console.error('No hay sesión activa para cargar reservas');
+                setReservas([]);
+                return;
+            }
             const response = await fetch('/api/admin/reservas', {
                 headers: { 'Authorization': `Bearer ${session.access_token}` }
             });
-            const { data } = await response.json();
-            setReservas(data || []);
-        } catch (error) { console.error(error); } finally { setLoading(false); }
+            const resJson = await response.json();
+            if (resJson.error) {
+                console.error('Error desde la API de reservas:', resJson.error);
+            }
+            setReservas(resJson.data || []);
+        } catch (error) { 
+            console.error('Error en fetchReservas:', error); 
+        } finally { 
+            setLoading(false); 
+        }
     }
 
     async function fetchArticulos() {
