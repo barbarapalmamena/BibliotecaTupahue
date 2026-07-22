@@ -46,7 +46,7 @@ export async function POST(request) {
         const { data: receptor } = await supabase
             .from('usuarios')
             .select('nombre, email')
-            .eq('id', reserva.user_id)
+            .eq('id', reserva.usuario_id)
             .single();
 
         if (!receptor?.email) return NextResponse.json({ error: 'El usuario no tiene email registrado' }, { status: 400 });

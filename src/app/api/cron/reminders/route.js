@@ -26,7 +26,7 @@ export async function GET(request) {
             .select(`
                 *,
                 libros(titulo),
-                usuarios:user_id(nombre, email)
+                usuarios:usuario_id(nombre, email)
             `)
             .eq('estado', 'activa');
 
