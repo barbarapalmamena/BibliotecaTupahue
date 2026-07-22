@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key');
 export async function POST(request) {
     try {
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
         // 1. Verificar autorización
