@@ -159,7 +159,7 @@ export async function getReservasUsuario(userId) {
     const client = getSupabaseClient();
     const { data, error } = await client
         .from('reservas')
-        .select(`*, libros (titulo, autor, categoria, paginas)`)
+        .select('*, libros(titulo, autor, paginas)')
         .eq('usuario_id', userId)
         .order('created_at', { ascending: false })
     return { data, error }
