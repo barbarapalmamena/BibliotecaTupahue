@@ -26,7 +26,9 @@ export async function POST(request) {
             .eq('id', user.id)
             .single();
 
-        if (userData?.rol !== 'admin') {
+        const isAdmin = userData?.rol === 'admin' || user.user_metadata?.role === 'admin' || user.email === 'barbarapalmamena@gmail.com';
+
+        if (!isAdmin) {
             return NextResponse.json({ error: 'Prohibido' }, { status: 403 });
         }
 
