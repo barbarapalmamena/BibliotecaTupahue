@@ -189,23 +189,20 @@ export async function devolverLibro(reservaId, libroId) {
 
 export async function eliminarReserva(reservaId, libroId) {
     const client = getSupabaseClient();
-    const { data: { user } } = await client.auth.getUser();
-    if (!user) return { error: { message: 'No autorizado' } };
+    const { data: { session } } = await client.auth.getSession();
+    if (!session?.access_token) return { error: { message: 'No autorizado' } };
     
-    const { error } = await client
-        .from('reservas')
-        .delete()
-        .eq('id', reservaId);
-
-    if (!error && libroId) {
-        const { data: libro } = await client.from('libros').select('cantidad').eq('id', libroId).single();
-        await client.from('libros').update({ 
-            cantidad: (libro?.cantidad || 0) + 1,
-            disponible: true 
-        }).eq('id', libroId);
+    try {
+        const response = await fetch(`/api/admin/reservas?reservaId=${reservaId}&libroId=${libroId || ''}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${session.access_token}` }
+        });
+        const result = await response.json();
+        if (result.error) return { error: { message: result.error } };
+        return { error: null };
+    } catch (err) {
+        return { error: { message: err.message } };
     }
-    
-    return { error };
 }
 
 // ===== GESTIÓN DE LIBROS (ADMIN) =====
