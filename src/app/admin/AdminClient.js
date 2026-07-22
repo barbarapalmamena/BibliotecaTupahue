@@ -508,15 +508,20 @@ export default function AdminClient({ user }) {
                                                                 <i className="bi bi-envelope"></i>
                                                             </button>
                                                             <button 
-                                                                onClick={() => { 
-                                                                    if(confirm('¿Eliminar esta reserva?')) {
-                                                                        eliminarReserva(res.id, res.libro_id).then(({error}) => {
-                                                                            if (error) alert('Error: ' + error.message);
-                                                                            else fetchReservas();
-                                                                        });
+                                                                onClick={async () => { 
+                                                                    if (confirm('¿Estás seguro de que deseas eliminar esta reserva de la base de datos?')) {
+                                                                        const { error } = await eliminarReserva(res.id, res.libro_id);
+                                                                        if (error) {
+                                                                            alert('Error al eliminar: ' + error.message);
+                                                                        } else {
+                                                                            alert('Reserva eliminada con éxito');
+                                                                            fetchReservas();
+                                                                            fetchDashboardStats();
+                                                                        }
                                                                     }
                                                                 }} 
                                                                 className={styles.btnDelete}
+                                                                title="Eliminar reserva"
                                                             >
                                                                 <i className="bi bi-trash"></i>
                                                             </button>
