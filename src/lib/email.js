@@ -2,10 +2,11 @@ import nodemailer from 'nodemailer';
 
 export async function sendEmail({ to, subject, html, cc }) {
     const gmailUser = process.env.GMAIL_USER || 'barbarapalmamena@gmail.com';
-    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    const rawPass = process.env.GMAIL_APP_PASSWORD || 'ohsadtvotirubbhc';
+    const gmailPass = rawPass ? rawPass.replace(/\s+/g, '') : '';
 
     if (!gmailPass) {
-        throw new Error('Falta la variable GMAIL_APP_PASSWORD en Vercel. Por favor créala en la cuenta de Google.');
+        throw new Error('Falta la contraseña de aplicación de Gmail.');
     }
 
     const transporter = nodemailer.createTransport({
@@ -19,7 +20,7 @@ export async function sendEmail({ to, subject, html, cc }) {
     const mailOptions = {
         from: `"Biblioteca Tupahue" <${gmailUser}>`,
         to: to,
-        cc: cc, // Copia opcional al admin
+        cc: cc, // Copia de respaldo al admin
         subject: subject,
         html: html
     };
