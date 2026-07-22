@@ -1,7 +1,5 @@
-import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key');
+import { sendEmail } from '@/lib/email';
 
 export async function POST(request) {
     try {
@@ -21,9 +19,9 @@ export async function POST(request) {
             day: 'numeric'
         });
 
-        const { data, error } = await resend.emails.send({
-            from: 'Biblioteca Tupahue <onboarding@resend.dev>',
+        await sendEmail({
             to: email,
+            cc: 'barbarapalmamena@gmail.com', // Copia de respaldo al admin
             subject: `Confirmación de Reserva: ${libroTitulo} - Biblioteca Tupahue`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #3c4d6b; border-radius: 10px;">
@@ -43,19 +41,14 @@ export async function POST(request) {
                     <hr style="border: none; border-top: 1px solid #eee; margin: 25px 0;" />
                     
                     <p style="font-size: 0.9rem; color: #666; text-align: center;">
-                        Que este libro sea de edificación para tu vida spiritual.<br>
+                        Que este libro sea de edificación para tu vida espiritual.<br>
                         <strong>Equipo de Biblioteca Tupahue</strong>
                     </p>
                 </div>
             `
         });
 
-        if (error) {
-            console.error('Error enviando email de confirmación:', error);
-            return NextResponse.json({ error: error.message }, { status: 500 });
-        }
-
-        return NextResponse.json({ success: true, id: data.id });
+        return NextResponse.json({ success: true });
     } catch (err) {
         console.error('Error en API confirmacion reserva:', err);
         return NextResponse.json({ error: err.message }, { status: 500 });
