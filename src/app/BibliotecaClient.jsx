@@ -177,16 +177,6 @@ export default function BibliotecaClient() {
                     </div>
                 )}
 
-                {/* ── BANNER MIS RESERVAS ── */}
-                {user && !isAdmin && (
-                    <a href="/mis-reservas" className={styles.reservasBanner}>
-                        <i className="bi bi-bookmark-check-fill"></i>
-                        Ver mis reservas y devoluciones
-                        <i className="bi bi-arrow-right"></i>
-                    </a>
-                )}
-
-
                 {/* ── BUSCADOR ── */}
 
                 <div className={styles.searchContainer}>
