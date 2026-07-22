@@ -75,7 +75,8 @@ export default function BibliotecaClient() {
 
                     const isAdmin = role === 'admin' || currentUser.user_metadata?.role === 'admin';
                     if (!isAdmin) {
-                        const { data: resData } = await getReservasUsuario(currentUser.id);
+                        const { data: resData, error: resError } = await getReservasUsuario(currentUser.id);
+                        if (resError) console.error('Error al cargar reservas:', resError);
                         if (resData) setMisReservas(resData);
                     }
                 }
