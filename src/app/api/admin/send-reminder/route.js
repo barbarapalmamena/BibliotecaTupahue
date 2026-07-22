@@ -82,7 +82,14 @@ export async function POST(request) {
             `
         });
 
-        if (error) throw error;
+        if (error) {
+            if (error.message?.includes('testing emails') || error.message?.includes('own email address')) {
+                return NextResponse.json({
+                    error: 'Modo de prueba de correos (Resend): En este plan gratuito de prueba solo se permite enviar emails a la cuenta del administrador (barbarapalmamena@gmail.com). Para enviar correos a cualquier hermano de la iglesia, se debe vincular un dominio propio en resend.com.'
+                }, { status: 400 });
+            }
+            throw error;
+        }
 
         return NextResponse.json({ success: true, messageId: data.id });
     } catch (err) {
