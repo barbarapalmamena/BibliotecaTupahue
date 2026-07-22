@@ -177,127 +177,18 @@ export default function BibliotecaClient() {
                     </div>
                 )}
 
-                {/* ── MIS RESERVAS ── */}
-                {user && !isAdmin && misReservas.length > 0 && (
-                    <div className={styles.reservasContainer}>
-                        <h2 className={styles.reservasTitle}>
-                            <i className="bi bi-bookmark-check" style={{ color: '#0d6efd', marginRight: '0.5rem' }}></i>
-                            Tus Reservas
-                        </h2>
-                        <div className={styles.reservasGrid}>
-                            {misReservas.map(res => {
-                                const dias = res.estado === 'activa' ? calcularDias(res) : null;
-                                return (
-                                    <div
-                                        key={res.id}
-                                        className={`${styles.reservaCard} ${res.estado === 'activa' ? (dias?.vencido ? styles.reservaVencida : styles.reservaActiva) : styles.reservaDevuelta}`}
-                                    >
-                                        {/* Título y autor */}
-                                        <h4 className={styles.reservaLibroTitulo}>
-                                            <i className="bi bi-book" style={{ marginRight: '0.4rem', color: '#3c4d6b' }}></i>
-                                            {res.libros?.titulo}
-                                        </h4>
-                                        {res.libros?.autor && (
-                                            <p className={styles.reservaDetalle} style={{ marginBottom: '0.75rem' }}>
-                                                <i className="bi bi-person" style={{ marginRight: '0.3rem' }}></i>
-                                                {res.libros.autor}
-                                            </p>
-                                        )}
-
-                                        {/* Estado */}
-                                        <p className={styles.reservaDetalle}>
-                                            <strong>Estado:</strong>{' '}
-                                            {res.estado === 'activa'
-                                                ? <span style={{ color: dias?.vencido ? '#dc3545' : '#17a2b8', fontWeight: 600 }}>
-                                                    {dias?.vencido ? '⚠️ Vencida' : '✅ Activa'}
-                                                  </span>
-                                                : <span style={{ color: '#28a745', fontWeight: 600 }}>✔ Devuelto</span>
-                                            }
-                                        </p>
-
-                                        {/* Info de tiempo (solo reservas activas) */}
-                                        {res.estado === 'activa' && dias && (
-                                            <>
-                                                <p className={styles.reservaDetalle}>
-                                                    <i className="bi bi-calendar3" style={{ marginRight: '0.3rem' }}></i>
-                                                    <strong>Llevas:</strong> {dias.transcurridos} día{dias.transcurridos !== 1 ? 's' : ''} con este libro
-                                                </p>
-                                                <p className={styles.reservaDetalle}>
-                                                    <i className="bi bi-clock" style={{ marginRight: '0.3rem', color: dias.vencido ? '#dc3545' : dias.restantes <= 2 ? '#ffc107' : '#28a745' }}></i>
-                                                    <strong>Tiempo restante:</strong>{' '}
-                                                    <span style={{ fontWeight: 600, color: dias.vencido ? '#dc3545' : dias.restantes <= 2 ? '#e0a800' : '#28a745' }}>
-                                                        {dias.vencido ? 'Plazo vencido' : `${dias.restantes} día${dias.restantes !== 1 ? 's' : ''}`}
-                                                    </span>
-                                                </p>
-                                                <p className={styles.reservaDetalle}>
-                                                    <i className="bi bi-calendar-x" style={{ marginRight: '0.3rem' }}></i>
-                                                    <strong>Vence:</strong>{' '}
-                                                    {new Date(res.vencimiento).toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric' })}
-                                                </p>
-
-                                                {/* Barra de progreso */}
-                                                <div style={{ margin: '0.75rem 0 0.25rem' }}>
-                                                    <div style={{
-                                                        height: '8px',
-                                                        borderRadius: '99px',
-                                                        background: '#e9ecef',
-                                                        overflow: 'hidden'
-                                                    }}>
-                                                        <div style={{
-                                                            height: '100%',
-                                                            width: `${dias.progreso}%`,
-                                                            borderRadius: '99px',
-                                                            background: dias.vencido ? '#dc3545' : dias.progreso >= 80 ? '#ffc107' : '#17a2b8',
-                                                            transition: 'width 0.4s ease'
-                                                        }} />
-                                                    </div>
-                                                    <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.2rem', textAlign: 'right' }}>
-                                                        {dias.progreso}% del tiempo usado
-                                                    </p>
-                                                </div>
-
-                                                {dias.vencido && (
-                                                    <p style={{ fontSize: '0.82rem', color: '#dc3545', fontWeight: 600, marginTop: '0.25rem' }}>
-                                                        ⚠️ Por favor, devuelve el libro lo antes posible.
-                                                    </p>
-                                                )}
-                                                {!dias.vencido && dias.restantes <= 2 && (
-                                                    <p style={{ fontSize: '0.82rem', color: '#e0a800', fontWeight: 600, marginTop: '0.25rem' }}>
-                                                        ⏰ ¡Te quedan pocos días! Recuerda devolver el libro.
-                                                    </p>
-                                                )}
-                                            </>
-                                        )}
-
-                                        {/* Fecha devolución (reservas devueltas) */}
-                                        {res.estado !== 'activa' && res.fecha_devolucion && (
-                                            <p className={styles.reservaDetalle}>
-                                                <i className="bi bi-check-circle" style={{ marginRight: '0.3rem', color: '#28a745' }}></i>
-                                                <strong>Devuelto el:</strong>{' '}
-                                                {new Date(res.fecha_devolucion).toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric' })}
-                                            </p>
-                                        )}
-
-                                        {/* Botón devolver */}
-                                        {res.estado === 'activa' && (
-                                            <button
-                                                onClick={() => handleDevolver(res.id, res.libro_id)}
-                                                disabled={devolviendo === res.id}
-                                                className={styles.btnDevolver}
-                                                style={{ marginTop: '1rem', width: '100%' }}
-                                            >
-                                                <i className="bi bi-arrow-return-left" style={{ marginRight: '0.4rem' }}></i>
-                                                {devolviendo === res.id ? 'Devolviendo…' : 'Marcar como Devuelto'}
-                                            </button>
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                {/* ── BANNER MIS RESERVAS ── */}
+                {user && !isAdmin && (
+                    <a href="/mis-reservas" className={styles.reservasBanner}>
+                        <i className="bi bi-bookmark-check-fill"></i>
+                        Ver mis reservas y devoluciones
+                        <i className="bi bi-arrow-right"></i>
+                    </a>
                 )}
 
+
                 {/* ── BUSCADOR ── */}
+
                 <div className={styles.searchContainer}>
                     <div className={styles.searchWrapper}>
                         <i className={`bi bi-search ${styles.searchIcon}`}></i>

@@ -373,3 +373,27 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ── BANNER MIS RESERVAS ── */
+.reservasBanner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #3c4d6b 0%, #2c3a52 100%);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(60, 77, 107, 0.3);
+}
+
+.reservasBanner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(60, 77, 107, 0.4);
+    color: #ffc107;
+}

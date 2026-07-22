@@ -109,6 +109,17 @@ export default function Navbar({ user: propUser, onLogout }) {
                                         </Link>
                                     </li>
                                 )}
+                                {!(userRole === 'admin' || navUser.user_metadata?.role === 'admin' || navUser.email === 'barbarapalmamena@gmail.com') && (
+                                    <li className={styles.navItem}>
+                                        <Link
+                                            className={`${styles.navLink} ${pathname === '/mis-reservas' ? styles.active : ''}`}
+                                            href="/mis-reservas"
+                                        >
+                                            <i className="bi bi-bookmark-check" style={{ marginRight: '0.3rem' }}></i>
+                                            Mis Reservas
+                                        </Link>
+                                    </li>
+                                )}
                                 <li className={styles.navItem}>
                                     <button
                                         className={styles.btnLogout}
