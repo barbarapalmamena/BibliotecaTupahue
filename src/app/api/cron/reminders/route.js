@@ -1,8 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key');
+import { sendEmail } from '@/lib/email';
 
 export const revalidate = 0;
 
@@ -79,19 +77,18 @@ export async function GET(request) {
             }
 
             if (tipoNotificacion) {
-                const { error: emailError } = await resend.emails.send({
-                    from: 'Biblioteca Tupahue <onboarding@resend.dev>',
-                    to: reserva.usuarios.email,
-                    subject: subject,
-                    html: html
-                });
-
-                if (emailError) {
-                    console.error(`Error enviando a ${reserva.usuarios.email}:`, emailError);
-                    resultados.errores++;
-                } else {
+                try {
+                    await sendEmail({
+                        to: reserva.usuarios.email,
+                        cc: 'barbarapalmamena@gmail.com',
+                        subject: subject,
+                        html: html
+                    });
                     if (tipoNotificacion === '3_dias') resultados.enviados_3_dias++;
                     else resultados.enviados_vencidos++;
+                } catch (emailError) {
+                    console.error(`Error enviando a ${reserva.usuarios.email}:`, emailError);
+                    resultados.errores++;
                 }
             }
         }

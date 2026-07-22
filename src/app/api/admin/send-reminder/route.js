@@ -1,8 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key');
+import { sendEmail } from '@/lib/email';
 
 export async function POST(request) {
     try {
@@ -14,7 +12,6 @@ export async function POST(request) {
         const authHeader = request.headers.get('Authorization');
         if (!authHeader) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 
-        // Crear cliente autenticado con el token del usuario o la Service Key
         const supabase = supabaseServiceKey
             ? createClient(supabaseUrl, supabaseServiceKey)
             : createClient(supabaseUrl, supabaseAnonKey, { global: { headers: { Authorization: authHeader } } });
@@ -46,7 +43,6 @@ export async function POST(request) {
             .single();
 
         if (resError || !reserva) {
-            console.error('Error buscando reserva:', resError);
             return NextResponse.json({ error: 'Reserva no encontrada' }, { status: 404 });
         }
 
@@ -59,10 +55,10 @@ export async function POST(request) {
 
         if (!receptor?.email) return NextResponse.json({ error: 'El usuario no tiene email registrado' }, { status: 400 });
 
-        // 4. Enviar email vía Resend
-        const { data, error } = await resend.emails.send({
-            from: 'Iglesia Tupahue <onboarding@resend.dev>',
+        // 4. Enviar email vía Gmail SMTP a la persona + copia al admin
+        await sendEmail({
             to: receptor.email,
+            cc: 'barbarapalmamena@gmail.com', // Copia de respaldo al admin
             subject: 'Recordatorio de Devolución - Biblioteca Tupahue',
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
@@ -82,16 +78,7 @@ export async function POST(request) {
             `
         });
 
-        if (error) {
-            if (error.message?.includes('testing emails') || error.message?.includes('own email address')) {
-                return NextResponse.json({
-                    error: 'Modo de prueba de correos (Resend): En este plan gratuito de prueba solo se permite enviar emails a la cuenta del administrador (barbarapalmamena@gmail.com). Para enviar correos a cualquier hermano de la iglesia, se debe vincular un dominio propio en resend.com.'
-                }, { status: 400 });
-            }
-            throw error;
-        }
-
-        return NextResponse.json({ success: true, messageId: data.id });
+        return NextResponse.json({ success: true });
     } catch (err) {
         console.error('Error enviando email:', err);
         return NextResponse.json({ error: err.message }, { status: 500 });
